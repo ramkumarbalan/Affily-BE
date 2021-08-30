@@ -39,6 +39,10 @@ export class ScraperService {
                                 providerType: reqBody.provider,
                                 originalPrice: productMRP,
                                 dealPrice: productDealPrice,
+                                productImages: [{
+                                    link: productImage,
+                                    position: 1
+                                }],
                                 productId: amazonProdutId,
                                 store: 'Amazon',
                                 url: `https://www.amazon.in/dp/${amazonProdutId}?tag=${tagId}`
