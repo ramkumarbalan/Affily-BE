@@ -1,5 +1,5 @@
 import { HttpModule, Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+import { ScraperModule } from '../module/scraper/scraper.module';
 import { AffilyDboService } from './dbo/affily.dbo.servic';
 
 @Module({
@@ -7,7 +7,8 @@ import { AffilyDboService } from './dbo/affily.dbo.servic';
         // MongooseModule.forFeature([
         //     { name: "collection name replace", schema: "schema name replace" },
         //   ]),
-        HttpModule
+        HttpModule,
+        ScraperModule
     ],
     providers: [AffilyDboService],
     exports: [AffilyDboService]

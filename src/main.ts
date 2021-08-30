@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { config } from './infrastructure/config/config.service';
 import { RequestTrackerInterceptor } from './infrastructure/interceptors/request-tracker.interceptor';
+import { ResponseTransformInterceptor } from './infrastructure/interceptors/response-transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,7 +13,7 @@ async function bootstrap() {
     }),
   );
   app.setGlobalPrefix('api/v1');
-  app.useGlobalInterceptors(new RequestTrackerInterceptor());
+  app.useGlobalInterceptors(new RequestTrackerInterceptor(), new ResponseTransformInterceptor());
   await app.listen(config.getNumber("APP_PORT"));
 }
 bootstrap();
