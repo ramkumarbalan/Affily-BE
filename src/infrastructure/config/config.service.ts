@@ -40,7 +40,10 @@ export class ConfigService {
         const password = this.getString('DB_PASS');
         const authDatabase = this.getString('DB_AUTH_METHOD');
         const authSource = this.getString('DB_AUTH_SOURCE');
-        return `mongodb://${(username && password)?`${username}:${password}@`:''}${host}:${port}/${database}${(authSource)?`?authSource=${authSource}`:''}`;
+        const connectionurl = this.getString('APP_ENV') === 'local' ? 
+        `mongodb://localhost:27017/affily`: `mongodb+srv://${username}:${password}@cluster0.epls1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+        console.log(connectionurl)
+        return connectionurl;
     }
 
     mongoOptions() {
