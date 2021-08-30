@@ -8,7 +8,7 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(config.mongoUrl(), config.mongoOptions()),
+    // MongooseModule.forRoot(config.mongoUrl(), config.mongoOptions()),
     InfrastructureModule,
     CommonModule
   ],
