@@ -14,6 +14,6 @@ async function bootstrap() {
   );
   app.setGlobalPrefix('api/v1');
   app.useGlobalInterceptors(new RequestTrackerInterceptor(), new ResponseTransformInterceptor());
-  await app.listen(config.getNumber("APP_PORT") || 80);
+  await app.listen(process.env.APP_PORT || 3000);
 }
 bootstrap();
