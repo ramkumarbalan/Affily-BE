@@ -18,7 +18,7 @@ export class ConfigService {
 
     static getInstance(): ConfigService {
         if (this.instance == null) {
-            this.instance = new ConfigService(`${process.env.NODE_ENV || ''}.env`);
+            this.instance = new ConfigService(`.env`);
         }
 
         return this.instance;
@@ -30,35 +30,6 @@ export class ConfigService {
 
     getNumber(key: string): number {
         return parseFloat(this.env[key]);
-    }
-
-    /**
-     * Ensures all needed variables are set, and returns the validated JavaScript object
-     * including the applied default values.
-     */
-    private validateInput(env: EnvConfig): EnvConfig {
-        const envVarsSchema: Joi.ObjectSchema = Joi.object({
-            APP_ENV: Joi.string()
-                .valid('local', 'development', 'alpha', 'production', 'test', 'provision')
-                .default('local'),
-            APP_PORT: Joi.number().default(4000),
-            DB_HOST: Joi.string(),
-            DB_PORT: Joi.string(),
-            DB_NAME: Joi.string(),
-            DB_USER: Joi.string(),
-            DB_PASS: Joi.string(),
-            DB_AUTH_METHOD: Joi.string(),
-            DB_AUTH_SOURCE: Joi.string(),
-            USER_PROFILE_SERVICE_URL: Joi.string()
-        });
-
-        const {error, value: validatedEnvConfig} = envVarsSchema.validate(env);
-
-        if (error) {
-            throw new Error(`Config validation error: ${error.message}`);
-        }
-
-        return validatedEnvConfig;
     }
 
     mongoUrl() {
