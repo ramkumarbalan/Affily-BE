@@ -17,7 +17,7 @@ export class Products {
     store: string;
     
     @Prop()
-    pId: string;
+    providerProductId: string;
 
     @Prop()
     pLink: string;
@@ -73,7 +73,7 @@ export class Products {
 
     @Prop()
     seoTags: string[];
-    
+
     @Prop()
     approved: boolean;
 }
