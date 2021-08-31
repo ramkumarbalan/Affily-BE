@@ -66,10 +66,16 @@ export class Products {
     productInsights: ProductInsights
 
     @Prop()
-    tags: string[]
+    tags: string[];
 
     @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }] })
-    category: [Category]
+    category: [Category];
+
+    @Prop()
+    seoTags: string[];
+    
+    @Prop()
+    approved: boolean;
 }
 
 export const productSchema = SchemaFactory.createForClass(Products);
