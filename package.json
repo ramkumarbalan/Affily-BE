@@ -33,6 +33,7 @@
     "fs": "^0.0.1-security",
     "joi": "^17.4.2",
     "mongoose": "^5.13.8",
+    "mongoose-sequence": "^5.3.1",
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
     "rimraf": "^3.0.2",

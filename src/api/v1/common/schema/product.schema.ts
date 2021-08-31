@@ -3,10 +3,12 @@ import * as mongoose from "mongoose";
 import { Category } from "./category.schema";
 import { ProductInsights } from "./product-insights.schema";
 
+export type ProductsDocument = Products & Document;
 @Schema({ timestamps: true })
 export class Products {
-    @Prop()
-    _id: number;
+
+    @Prop({type: Number})
+    productId: number;
 
     @Prop()
     title: string;

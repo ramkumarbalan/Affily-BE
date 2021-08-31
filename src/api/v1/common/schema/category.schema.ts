@@ -1,15 +1,17 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
+export type CategoryDocument = Category & Document;
+
 @Schema({timestamps: true})
 export class Category {
 
-    @Prop()
-    id: number;
+    @Prop({ type: Number })
+    categoryId: number;
 
     @Prop()
     name: string;
 
-    @Prop()
+    @Prop({default: {name: '', childrens: []}})
     childrens: object[];
 }
 
